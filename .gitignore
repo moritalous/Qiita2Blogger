@@ -1,0 +1,5 @@
+.mc
+.venv
+node_modules
+token.json
+client_secrets.json

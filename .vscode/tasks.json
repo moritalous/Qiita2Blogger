@@ -1,0 +1,32 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Qiita2Blogger",
+            "type": "shell",
+            "command": "./qiita2blogger.sh ${input:qiita_post_id}",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "ConvertMarkdown2HTML",
+            "type": "shell",
+            "command": "docker run --rm  -u `id -u`:`id -g` -v `pwd`:/work -w /work --entrypoint npx node:lts -y remark-cli ${input:qiita_post_id}/${input:qiita_post_id}.md --output ${input:qiita_post_id}/${input:qiita_post_id}.html",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "qiita_post_id",
+            "description": "Qiita Post ID",
+            "type": "promptString"
+        }
+    ]
+}

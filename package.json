@@ -1,0 +1,28 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pondorasti/remark-img-links": "^1.0.8",
+    "rehype-highlight": "^5.0.2",
+    "rehype-stringify": "^9.0.3",
+    "remark-breaks": "^3.0.2",
+    "remark-cli": "^11.0.0",
+    "remark-directive": "^2.0.1",
+    "remark-directive-rehype": "^0.4.0",
+    "remark-frontmatter": "^4.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-github-beta-blockquote-admonitions": "^1.1.0",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unist-util-visit": "^4.1.0"
+  }
+}
