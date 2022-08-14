@@ -40,7 +40,7 @@ const remarkConfig = {
         remarkBreaks,
         remarkFrontmatter,
         remarkGfm,
-        [remarkToc, {heading: '目次'}],
+        [remarkToc, {heading: '目次', tight: true}],
         [remarkImgLinks, {
             absolutePath: "https://image.xxx.com/"
         }],
