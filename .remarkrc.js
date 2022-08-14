@@ -66,13 +66,44 @@ function myRemarkPlugin() {
                 node.type === 'leafDirective' ||
                 node.type === 'containerDirective'
             ) {
-                if (node.name !== 'note') return
+                if (node.name == 'note') {
+                    const data = node.data || (node.data = {})
+                    const tagName = node.type === 'textDirective' ? 'span' : 'div'
+    
+                    data.hName = tagName
+                    data.hProperties = h(tagName, { class: 'flash mt-3' }).properties    
+                } else if (node.name == 'note-info') {
+                    const data = node.data || (node.data = {})
+                    const tagName = node.type === 'textDirective' ? 'span' : 'div'
+    
+                    data.hName = tagName
+                    data.hProperties = h(tagName, { class: 'flash mt-3' }).properties    
+                } else if (node.name == 'note-warn') {
+                    const data = node.data || (node.data = {})
+                    const tagName = node.type === 'textDirective' ? 'span' : 'div'
+    
+                    data.hName = tagName
+                    data.hProperties = h(tagName, { class: 'flash mt-3 flash-warn' }).properties    
+                } else if (node.name == 'note-alert') {
+                    const data = node.data || (node.data = {})
+                    const tagName = node.type === 'textDirective' ? 'span' : 'div'
+    
+                    data.hName = tagName
+                    data.hProperties = h(tagName, { class: 'flash mt-3 flash-error' }).properties    
+                } else if (node.name == 'note-success') {
+                    const data = node.data || (node.data = {})
+                    const tagName = node.type === 'textDirective' ? 'span' : 'div'
+    
+                    data.hName = tagName
+                    data.hProperties = h(tagName, { class: 'flash mt-3 flash-success' }).properties    
+                }
+                // if (node.name !== 'note') return
 
-                const data = node.data || (node.data = {})
-                const tagName = node.type === 'textDirective' ? 'span' : 'div'
+                // const data = node.data || (node.data = {})
+                // const tagName = node.type === 'textDirective' ? 'span' : 'div'
 
-                data.hName = tagName
-                data.hProperties = h(tagName, { class: 'flash mt-3' }).properties
+                // data.hName = tagName
+                // data.hProperties = h(tagName, { class: 'flash mt-3' }).properties
             }
         })
     }
