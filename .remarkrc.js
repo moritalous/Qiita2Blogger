@@ -8,6 +8,8 @@ import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeStringify from 'rehype-stringify'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
 import cmake from 'highlight.js/lib/languages/cmake'
 import dart from 'highlight.js/lib/languages/dart'
@@ -40,7 +42,7 @@ const remarkConfig = {
         remarkGfm,
         [remarkToc, {heading: '目次'}],
         [remarkImgLinks, {
-            absolutePath: "https://images.xxx.com/"
+            absolutePath: "https://image.xxx.com/"
         }],
         remarkDirective,
         myRemarkPlugin,
@@ -55,7 +57,9 @@ const remarkConfig = {
         }],
         [rehypeStringify, {
             allowDangerousHtml: true
-        }]
+        }],
+        rehypeSlug,
+        rehypeAutolinkHeadings
     ]
 }
 
