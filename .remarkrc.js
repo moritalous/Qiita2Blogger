@@ -2,6 +2,7 @@ import remarkParse from 'remark-parse'
 import remarkBreaks from 'remark-breaks'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
+import remarkToc from 'remark-toc'
 import remarkImgLinks from '@pondorasti/remark-img-links'
 import remarkDirective from 'remark-directive'
 import remarkRehype from 'remark-rehype'
@@ -37,9 +38,10 @@ const remarkConfig = {
         remarkBreaks,
         remarkFrontmatter,
         remarkGfm,
-        // [remarkImgLinks, {
-        //     absolutePath: "https://xxx.xxx.com/"
-        // }],
+        [remarkToc, {heading: '目次'}],
+        [remarkImgLinks, {
+            absolutePath: "https://images.xxx.com/"
+        }],
         remarkDirective,
         myRemarkPlugin,
         [remarkRehype, {
