@@ -34,6 +34,13 @@ cat ${WORK_DIR}/${QIITA_POST_ID}.json | jq -r '.created_at' > ${WORK_DIR}/${QIIT
 sed -i -e 's/https:\/\/qiita-image-store.s3.amazonaws.com/images/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
 sed -i -e 's/https:\/\/qiita-image-store.s3.ap-northeast-1.amazonaws.com/images/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
 
+# replace `Note`
+sed -i -e 's/:::note info/:::note-info/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
+sed -i -e 's/:::note warn/:::note-warn/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
+sed -i -e 's/:::note alert/:::note-alert/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
+sed -i -e 's/:::note success/:::note-success/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
+
+
 # Convert Markdown to HTML
 docker run --rm  -u `id -u`:`id -g` -v `pwd`:/work -w /work --entrypoint npx node:lts -y remark-cli ${WORK_DIR}/${QIITA_POST_ID}.md --output ${WORK_DIR}/${QIITA_POST_ID}.html
 
