@@ -44,6 +44,9 @@ sed -i -e 's/:::note success/:::note-success/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
 # Convert Markdown to HTML
 docker run --rm  -u `id -u`:`id -g` -v `pwd`:/work -w /work --entrypoint npx node:lts -y remark-cli ${WORK_DIR}/${QIITA_POST_ID}.md --output ${WORK_DIR}/${QIITA_POST_ID}.html
 
+# replace
+sed -i -e 's/<h1 id="目次">/<!--more--><h1 id="目次">/g' ${WORK_DIR}/${QIITA_POST_ID}.html;
+
 # Upload Images
 docker run --rm  -v `pwd`:/work -v `pwd`/.mc:/root/.mc -w /work minio/mc cp --recursive /work/${WORK_DIR}/images ${MC_ALIAS}/${MC_BUCKET}/
 
