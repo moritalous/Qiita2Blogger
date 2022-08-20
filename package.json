@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@pondorasti/remark-img-links": "^1.0.8",
+    "@squoosh/cli": "^0.7.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-highlight": "^5.0.2",
     "rehype-slug": "^5.0.1",

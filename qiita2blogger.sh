@@ -40,12 +40,24 @@ sed -i -e 's/:::note warn/:::note-warn/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
 sed -i -e 's/:::note alert/:::note-alert/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
 sed -i -e 's/:::note success/:::note-success/g' ${WORK_DIR}/${QIITA_POST_ID}.md;
 
-
 # Convert Markdown to HTML
 docker run --rm  -u `id -u`:`id -g` -v `pwd`:/work -w /work --entrypoint npx node:lts -y remark-cli ${WORK_DIR}/${QIITA_POST_ID}.md --output ${WORK_DIR}/${QIITA_POST_ID}.html
 
 # replace
 sed -i -e 's/<h1 id="目次">/<!--more--><h1 id="目次">/g' ${WORK_DIR}/${QIITA_POST_ID}.html;
+
+# Image Optimization
+for file in `find ${WORK_DIR} -name *.png`;
+do
+ dirname=`dirname $file`
+ echo $basename $dirname
+ docker run \
+   --rm \
+   -u `id -u`:`id -g` \
+   -v `pwd`:/work \
+   -w /work \
+   --entrypoint npx node:lts @squoosh/cli --oxipng "{numColors: 255,dither: 1.0,}" -d $dirname $file
+done;
 
 # Upload Images
 docker run --rm  -v `pwd`:/work -v `pwd`/.mc:/root/.mc -w /work minio/mc cp --recursive /work/${WORK_DIR}/images ${MC_ALIAS}/${MC_BUCKET}/
