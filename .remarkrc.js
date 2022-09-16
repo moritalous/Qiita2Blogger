@@ -80,7 +80,7 @@ const remarkConfig = {
     ]
 }
 
-// `:::note` を `<div class="flash mt-3"></div>にします。`
+// `:::note` を `<div class="flash my-3"></div>にします。`
 function myRemarkPlugin() {
     return (tree) => {
         visit(tree, (node) => {
@@ -94,31 +94,31 @@ function myRemarkPlugin() {
                     const tagName = node.type === 'textDirective' ? 'span' : 'div'
 
                     data.hName = tagName
-                    data.hProperties = h(tagName, { class: 'flash mt-3' }).properties
+                    data.hProperties = h(tagName, { class: 'flash my-3' }).properties
                 } else if (node.name == 'note-info') {
                     const data = node.data || (node.data = {})
                     const tagName = node.type === 'textDirective' ? 'span' : 'div'
 
                     data.hName = tagName
-                    data.hProperties = h(tagName, { class: 'flash mt-3' }).properties
+                    data.hProperties = h(tagName, { class: 'flash my-3' }).properties
                 } else if (node.name == 'note-warn') {
                     const data = node.data || (node.data = {})
                     const tagName = node.type === 'textDirective' ? 'span' : 'div'
 
                     data.hName = tagName
-                    data.hProperties = h(tagName, { class: 'flash mt-3 flash-warn' }).properties
+                    data.hProperties = h(tagName, { class: 'flash my-3 flash-warn' }).properties
                 } else if (node.name == 'note-alert') {
                     const data = node.data || (node.data = {})
                     const tagName = node.type === 'textDirective' ? 'span' : 'div'
 
                     data.hName = tagName
-                    data.hProperties = h(tagName, { class: 'flash mt-3 flash-error' }).properties
+                    data.hProperties = h(tagName, { class: 'flash my-3 flash-error' }).properties
                 } else if (node.name == 'note-success') {
                     const data = node.data || (node.data = {})
                     const tagName = node.type === 'textDirective' ? 'span' : 'div'
 
                     data.hName = tagName
-                    data.hProperties = h(tagName, { class: 'flash mt-3 flash-success' }).properties
+                    data.hProperties = h(tagName, { class: 'flash my-3 flash-success' }).properties
                 }
             }
         })
